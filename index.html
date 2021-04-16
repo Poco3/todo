@@ -15,8 +15,7 @@
         <label><input type="radio" checked="checked">すべて</label>
         <label><input type="radio">完了</label>
         <label><input type="radio" >作業中</label>
-        
-      <table >
+        <table >
         <thead >
           <tr id="list">
             <th type="text" id="test1" >ID</th>
@@ -43,11 +42,10 @@
       let num = 0;
       
       
-      const todos = []
+      const todos = [];
       const todo = {
-         id:num,
          comment: '',
-         status: '作業中'
+         status: "作業中"
           }
 
 const output = document.getElementById("output");
@@ -56,39 +54,44 @@ const output = document.getElementById("output");
 const addTask = () => {
   const input = document.getElementById('input').value;
   todo.comment = input
-  todo.num = input
   todos.push(todo)
   displayTodos(todo)
   num++
 }
 
 //関数displayTodos
-const displayTodos = (todo) => {
+  const displayTodos = (todo) => {
   const list = document.createElement("td");
   list.textContent = num;
-  const input2 = document.createElement("td");
-  input2.textContent = todo.input
-  const btn1 = document.createElement("button");
-  btn1.textContent = todo.status
-  const btn2 = document.createElement("button")
-  btn2.textContent ='削除'      
+
   const th = document.createElement('td');
   th.textContent = todo.comment
   input.value ='';
 
-  
-  
+    const stbtn1 = () =>{
+    const btn1 = document.createElement("button");
+    btn1.textContent = todo.status
+    return btn1;
+    }
+
+    const stbtn2 = () =>{
+      const btn2 = document.createElement("button")
+      btn2.textContent ='削除'
+      return btn2;
+    }
+
+    
+
   const tBody = document.getElementById('new-task')
-  const tBody2 = document.createElement('tr');
-  tBody.appendChild(tBody2);
-  tBody.appendChild(list)
-  tBody.appendChild(th)
-  tBody.appendChild(input2);
-  tBody.appendChild(btn1)
-  tBody.appendChild(btn2)
+  const tr = document.createElement('tr');
+  tBody.appendChild(tr);
+  tBody.appendChild(list);
+  tBody.appendChild(th);
+  tBody.appendChild(stbtn1());
+  tBody.appendChild(stbtn2());
   };
 
-output.addEventListener('click', addTask,)
+  output.addEventListener('click', addTask,)
 
 </script>
   </body>
